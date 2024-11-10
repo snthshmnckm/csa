@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Analysis Results</h1>
+
+    <h2>Total Cars by Brand</h2>
+    <ul>
+        {% for brand, count in analysis['Total Cars by Brand'].items() %}
+            <li>{{ brand }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Average Price by Brand</h2>
+    <ul>
+        {% for brand, price in analysis['Average Price by Brand'].items() %}
+            <li>{{ brand }}: {{ price | round(2) }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Cars by Category</h2>
+    <ul>
+        {% for category, count in analysis['Cars by Category'].items() %}
+            <li>{{ category }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('index') }}">Add Another Car</a>
+    <br>
+    <a href="{{ url_for('charts') }}">View Charts</a> <!-- Button to view charts -->
+</body>
+</html>
